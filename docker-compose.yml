@@ -1,0 +1,62 @@
+#version: '3'
+
+services:
+  app:
+    image: giovanegurgel/laravel_11
+    container_name: laravel_11
+    restart: unless-stopped
+    # Ativar mapeamento em caso
+    # de conflito de porta com algum
+    # programa existente. Isso vale 
+    # para todos os serviços.
+    #
+    # ports:
+    #   - '8080:8080'
+    volumes:
+      - './project:/var/www/html'
+    network_mode: host
+
+  mailpit:
+    container_name: mailpit11
+    image: 'axllent/mailpit:latest'
+    # ports:
+    #   - '1025:1025'
+    #   - '8025:8025'
+    environment:
+      - TZ='America/Fortaleza'
+    network_mode: host
+
+  # mysql:
+  #   container_name: mysql
+  #   image: mysql:8.0-debian
+  #   restart: unless-stopped
+  #   volumes:
+  #     - .devcontainer/mysql:/var/lib/mysql:delegated
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     - TZ='America/Fortaleza'
+  #     - MYSQL_DATABASE=aula_mysql
+  #     - MYSQL_USER=aula_mysql
+  #     - MYSQL_PASSWORD=aula_mysql
+  #     - MYSQL_ROOT_PASSWORD=aula_mysql
+  #   network_mode: host
+  
+  # dbgate:
+  #   image: dbgate/dbgate
+  #   container_name: dbgate
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8010:3000
+  #   volumes:
+  #     - .devcontainer/dbgate:/root/.dbgate
+  #   environment:
+  #     CONNECTIONS: con1
+  #
+  #     LABEL_con1: MySQL
+  #     SERVER_con1: mysql
+  #     USER_con1: root
+  #     PASSWORD_con1: aula_mysql
+  #     PORT_con1: 3306
+  #     ENGINE_con1: mysql@dbgate-plugin-mysql
+  #   network_mode: host

@@ -1,0 +1,65 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
+{
+    "name": "laravel_11",
+    // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+    // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    // The 'service' property is the name of the service for the container that VS Code should
+    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+    "service": "app",
+    "initializeCommand": "if docker ps -a --filter 'name=laravel_11' --format '{{.Names}}' | grep -w 'laravel_11' > /dev/null; then docker stop laravel_11 && docker rm laravel_11; fi",
+    // The optional 'workspaceFolder' property is the path VS Code should open by default when
+    // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+    //"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "workspaceFolder": "/var/www/html",
+    "shutdownAction": "stopCompose",
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode-remote.vscode-remote-extensionpack",
+                "zobo.php-intellisense",
+                "bmewburn.vscode-intelephense-client",
+                "onecentlin.laravel-extension-pack",
+                "bradlc.vscode-tailwindcss",
+                "pkief.material-icon-theme",
+                "xabikos.javascriptsnippets",
+                "mgmcdermott.vscode-language-babel",
+                "bebo925.livewire-switcher",
+                "Vue.volar",
+                "open-southeners.laravel-pint",
+                "vscode.html-language-features",
+                "esbenp.prettier-vscode",
+                "vscode.json-language-features"
+            ],
+            "settings": {
+                "[blade]": {
+                    "editor.defaultFormatter": "shufo.vscode-blade-formatter"
+                },
+                "[html]": {
+                    "editor.defaultFormatter": "vscode.html-language-features"
+                },
+                "[javascript]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[javascriptreact]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[json]": {
+                    "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[jsonc]": {
+                    "editor.defaultFormatter": "vscode.json-language-features"
+                },
+                "[php]": {
+                    "editor.defaultFormatter": "open-southeners.laravel-pint"
+                }
+            }
+        }
+    },
+    "postStartCommand": "chown www-data:www-data /var/www/html && su www-data"
+}
