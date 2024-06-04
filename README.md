@@ -71,17 +71,22 @@ code .
 ```
 4. Clique no botão **`Reabrir no Contêiner`** que aparece no canto inferior direito. Nesse momento o VSCode será reaberto dentro do contexto do container Docker (conforme indicado em `docker-compose.yml`).
 
-![Imagem da janela de reabrir Contêiner](https://raw.githubusercontent.com/giovanegurgel/devcont_laravel/main/img/reabrir_container.png)
+<img  src=".devcontainer/img/reopen-in-container.png" width="420" alt="Reabrir no container.">
 
-5. Criando um novo projeto LARAVEL 11:
+5. O container estará pronto quando indicar `Dev Container: laravel_11` no canto inferior esquerdo do VSCode.
+
+<img  src=".devcontainer/img/dev-container-running.png" width="420" alt="Container Running.">
+
+6. Crie um projeto LARAVEL 11:
+
 > <picture>
 >   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/warning.svg">
 >   <img alt="Warning" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg">
 > </picture><br>
 >
-> **ATENÇÃO: Para criar um novo projeto, é necessário executar o comando `/var/www/create_laravel.sh` no  terminal do VSCode dentro do container. Após esse comando importar o Laravel e fazer o Build dos pacotes NodeJS, o projeto estará disponível na pasta `/var/www/html`.**
+> **ATENÇÃO: Se o Laravel ainda não foi importado, é necessário executar o comando `/var/www/create_laravel.sh` no  terminal do VSCode dentro do container. Esse comando vai importar o Laravel e fazer o Build dos pacotes NodeJS, o projeto estará disponível na pasta `/var/www/html`.**
 
-6. Algumas extensões VSCode serão instaladas automaticamente. Pode instalar outras normalmente ou obter as extensões já ativadas no seu VSCode. Para isso vá na aba de extensões, depois clique no ícone de nuvem, selecione as extensões que deseja instalar e clique em `Ok`.
+7. Algumas extensões VSCode serão instaladas automaticamente. Pode instalar outras normalmente ou obter as extensões já ativadas no seu VSCode. Para isso vá na aba de extensões, depois clique no ícone de nuvem, selecione as extensões que deseja instalar e clique em `Ok`.
 
 > <picture>
 >   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/info.svg">
@@ -98,6 +103,10 @@ code .
 
 🌐 Acesse o [**`DBGate ➡️ http://localhost:8010`**](http://localhost:8010) no navegador.
 
+# 🏁 Encerrando...
+Para encerrar a utilização do container, clique em `Dev Container: laravel_11` no canto inferior esquerdo do VSCode e logo em seguida escolha a opção `Close Remote Connection`. **SEMPRE faça isso ANTES de fechar o VSCode**.
+
+<img  src=".devcontainer/img/close-remote-connection.png" width="420" alt="Close Remote Connection.">
 
 # ✨ Dicas
 
@@ -113,14 +122,14 @@ code .
 >   <img alt="Warning" src="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/dark-theme/warning.svg">
 > </picture><br>
 >
-> **ATENÇÃO: Se houver algum conflito com nomes de Contêiners, utilize os seguintes comandos Docker para solucionar o problema. Também pode utilizar as interfaces gráficas `Docker Desktop` ou `Portainer` para excluir algum container já existente.**
+> **ATENÇÃO: Se houver algum conflito com nomes de Contêiners, utilize os seguintes comandos Docker para solucionar o problema. Também pode utilizar as interfaces gráficas `Docker Desktop` ou [**`Portainer(https://localhost:9443)`**](https://localhost:9443) para excluir algum container já existente.**
 
 ```bash
-docker ps # lista containers em execução
+docker ps # lista containers em execução. Identifique o NAME do container.
 
-docker container ls -a # lista containers ocultos
+docker container ls -a # lista containers ocultos. Identifique o NAME do container.
 
-docker container rm NOMECONTAINER # EXCLUI o container "NOMECONTAINER"
+docker container rm NAMECONTAINER # EXCLUI o container "NAMECONTAINER"
 ```
 > <picture>
 >   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Mqxx/GitHub-Markdown/main/blockquotes/badge/light-theme/info.svg">
