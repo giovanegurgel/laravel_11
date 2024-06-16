@@ -34,6 +34,7 @@
                 "open-southeners.laravel-pint",
                 "vscode.html-language-features",
                 "esbenp.prettier-vscode",
+                "MehediDracula.php-namespace-resolver",
                 "vscode.json-language-features"
             ],
             "settings": {
